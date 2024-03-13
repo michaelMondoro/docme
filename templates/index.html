@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='custom.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='pico.min.css') }}"/>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <ul>
+              <!-- <li><a href="#" class="secondary"><img class="icon" src="{{ url_for('static',filename='logo.png') }}"></a> -->
+            </ul>
+            <ul>
+              <li><strong>MapMe</strong></li>
+            </ul>
+            <ul>
+              <li><a href="/mapping" class="secondary">--</a></li>
+            </ul>
+        </nav>
+        <hr>
+        <section></section>
+        <div>
+          {% for doc in docs %}
+          <details>
+            <summary><code>{{ doc.decl }}</code></summary>
+            <p>{{ doc.desc }}</p>
+            <ul>
+              {% for arg in doc.args %}
+                <span>{{ arg.name }} : {{ arg.type }} </span>
+                <br>
+                <span>{{ arg.desc }}</span>
+                <hr>
+              {% endfor %}
+            </ul>
+          </details>
+          {% endfor %}
+        </div>
+        
+    </div>
+</body>
+</html>
